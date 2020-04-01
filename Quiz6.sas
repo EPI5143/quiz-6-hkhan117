@@ -50,11 +50,12 @@ would have a total encounter count of 2.
 Generate a frequency table of total encounter number for this data set, and paste the (text) table into your assignment- 
 use the SAS tip from class to make the table output text-friendly
 ie:;
+options formchar="|----|+|---+=|-/\<>*";
 data ex.countd; 
 set ex.count; 
 totcount=inptencounter_count+emergencounter_count; 
-run; 
-options formchar="|----|+|---+=|-/\<>*";
+run;
+proc printto file='/folders/myfolders/database/report.txt' new; 
 proc freq data=ex.countd order=freq; 
 table totcount; 
 run; 
